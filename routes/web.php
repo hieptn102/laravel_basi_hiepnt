@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\UserController;
-
+use App\Http\Controllers\PostController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,9 +14,8 @@ use App\Http\Controllers\UserController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/',function(){
-   return "home page";
-});
-Route::prefix('user')->group(function(){
-   Route::get('/', [UserController::class, 'index']);
-});
+
+
+Route::get('create', [PostController::class, 'getAdd']);
+Route::post('create', [PostController::class, 'postAdd']);
+Route::get('list', [PostController::class, 'index'])->name('user.index');
